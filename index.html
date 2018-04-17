@@ -33,7 +33,7 @@
 		______*/
 
 	let svg = document.querySelector('path');
-
+	// console.log(svg.getAttribute('d').split(','));
 
 	/*  ______
 		
@@ -55,45 +55,54 @@
 		Feel free to edit the value for greater or smaller changes in shape distortion.
 		______*/
 
-	const userVariance = 50
+	const userVariance = 100
 
-	/*  ______
-		
-		Randomizer() is a callback function used as an argument with the forEach() method.
+	/* 	______
+
+		Cleaner() is a callback function to be used with the .forEach() method.
 		
 		Current Iteration:
-		1. Randomizes any path coordinates that are whole numbers.
-		2. Removes any chained white-space characters.
-		3. Last two conditionals are just for testing output to the console for future conditionals.
+		1. Removes any chained white-space characters.
+		2. Changes any coordinates that are combined via space and seperates them w/ a comma.
 		______*/
 
-	function randomizer(coord, i, path) {
-		
-		if (path[i].match(letters) === null && path[i].match(dashDeci) === null) {
-			console.log('Index: ' + i + ' Value: ' + path[i]);
-			path[i] = parseInt(coord) + Math.floor(Math.random() * userVariance);
-			path[i] = path[i].toString();
-			console.log('New Value: ' + path[i]);
-			console.log(' ');
-		}
-		
-		else if (path[i].match(spacers)) {
+	function cleaner(coord, i, path) {
+		if (path[i].match(spacers)) {
 			let tempPath = path[i].split(spacers);
 			for (let j = 0; j < tempPath.length; j++) {
 				tempPath[j].trim();
 			}
 			path[i] = tempPath.join(' ');
-			//console.log('Index: ' + i + ' Value: ' + path[i]);
+			console.log('Index: ' + i + ' Value: ' + path[i]);
 		}
-		
+
 		else if (path[i].match(space)) {
 			let tempPathTwo = path[i].split(' ');
 			path[i] = tempPathTwo.join(' ')
-			//console.log('Index: ' + i + ' Value: ' + path[i]);
+			console.log('Index: ' + i + ' Value: ' + path[i]);
 		}
+	}
+
+	/*  ______
 		
+		Randomizer() is a callback function used as an argument with the .forEach() method.
+		
+		Current Iteration:
+		1. Randomizes any path coordinates that are whole numbers.
+		______*/
+
+
+	function randomizer(coord, i, path) {
+		
+		if (path[i].match(letters) === null && path[i].match(dashDeci) === null) {
+			// console.log('Index: ' + i + ' Value: ' + path[i]);
+			path[i] = parseInt(path[i]) + Math.floor(Math.random() * userVariance);
+			path[i] = path[i].toString();
+			// console.log('New Value: ' + path[i]);
+			// console.log(' ');
+		}
 		else {
-			//console.log('Index: ' + i + ' Value: ' + path[i]);
+			// console.log('Index: ' + i + ' Value: ' + path[i]);
 		}
 	}
 
@@ -108,9 +117,10 @@
 	function distort() {
 		let d = document.getElementsByTagName("path")[0].getAttribute('d');
 		newPath = d.split(',');
+		newPath.forEach(cleaner);
+		// console.log(newPath);
 		newPath.forEach(randomizer);
 		newPath = newPath.join(' ');
-		console.log(newPath);
 		svg.setAttribute("d", newPath);
 	}
 
