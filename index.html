@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Distort</title>
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<script type="text/javascript" src="scripts/script.js"></script>
+</head>
+
+<!-- BODY[start] -->
+<body>
+	<div class="container">
+		<div class="svg-container">
+
+			<svg width="500" height="500">
+					<path d="M250,107.554c38.049,0,73.82,14.817,100.725,41.722c26.904,26.904,41.722,62.676,41.722,100.725 s-14.817,73.82-41.722,100.725S288.049,392.446,250,392.446s-73.82-14.817-100.725-41.722 C122.371,323.82,107.554,288.049,107.554,250s14.817-73.82,41.722-100.725C176.18,122.371,211.951,107.554,250,107.554 M250,47.554
+					C138.192,47.554,47.554,138.192,47.554,250c0,111.808,90.638,202.446,202.446,202.446c111.808,0,202.446-90.639,202.446-202.446
+					C452.446,138.192,361.808,47.554,250,47.554L250,47.554z"/>
+			</svg>
+
+		</div>
+		<button onclick="distort()">Distort</button>
+		<button value="Refresh Page" onclick="window.location.href=window.location.href">Refresh</button>
+	</div>
+</body>
+<!-- BODY[end] -->
+
+<script>
+
+	/*  ______
+		
+		This selects the <path> tag. 
+		It does NOT select the svg coordinates/attributes.
+		______*/
+
+	let svg = document.querySelector('path');
+
+
+	/*  ______
+		
+		These are some regular expressions stored as variables.
+		Path coordinates contain a lot of non-numeric characters.
+		These help in finding/targeting them.
+		______*/
+
+	const letters = /[a-zA-Z]/
+	const spacers = /\s{2,}/
+	const space = /\s/
+	const dash = /[-]/
+	const deci = /[.]/
+	const dashDeci = /[.-]/
+
+	/* 	______
+
+		userVariance will be defined via input by the user in the future.
+		Feel free to edit the value for greater or smaller changes in shape distortion.
+		______*/
+
+	const userVariance = 50
+
+	/*  ______
+		
+		Randomizer() is a callback function used as an argument with the forEach() method.
+		
+		Current Iteration:
+		1. Randomizes any path coordinates that are whole numbers.
+		2. Removes any chained white-space characters.
+		3. Last two conditionals are just for testing output to the console for future conditionals.
+		______*/
+
+	function randomizer(coord, i, path) {
+		
+		if (path[i].match(letters) === null && path[i].match(dashDeci) === null) {
+			console.log('Index: ' + i + ' Value: ' + path[i]);
+			path[i] = parseInt(coord) + Math.floor(Math.random() * userVariance);
+			path[i] = path[i].toString();
+			console.log('New Value: ' + path[i]);
+			console.log(' ');
+		}
+		
+		else if (path[i].match(spacers)) {
+			let tempPath = path[i].split(spacers);
+			for (let j = 0; j < tempPath.length; j++) {
+				tempPath[j].trim();
+			}
+			path[i] = tempPath.join(' ');
+			//console.log('Index: ' + i + ' Value: ' + path[i]);
+		}
+		
+		else if (path[i].match(space)) {
+			let tempPathTwo = path[i].split(' ');
+			path[i] = tempPathTwo.join(' ')
+			//console.log('Index: ' + i + ' Value: ' + path[i]);
+		}
+		
+		else {
+			//console.log('Index: ' + i + ' Value: ' + path[i]);
+		}
+	}
+
+	/* 	______
+
+	The distort() function defines the path attribute/coordinates as a variable.
+	Then it is split into an array followed up with a forEach on it with randomizer()
+	as an argument. It's joined together into a single string.
+	Finally, the original <path> attribute with the new path coordinates.
+	______*/
+
+	function distort() {
+		let d = document.getElementsByTagName("path")[0].getAttribute('d');
+		newPath = d.split(',');
+		newPath.forEach(randomizer);
+		newPath = newPath.join(' ');
+		console.log(newPath);
+		svg.setAttribute("d", newPath);
+	}
+
+</script>
+
+</html>
