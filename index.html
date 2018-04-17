@@ -35,7 +35,6 @@
 		______*/
 
 	let svg = document.querySelector('path');
-	// console.log(svg.getAttribute('d').split(','));
 
 	/*  ______
 		
@@ -62,10 +61,7 @@
 	/* 	______
 
 		Cleaner() is a callback function to be used with the .forEach() method.
-		
-		Current Iteration:
-		1. Removes any chained white-space characters.
-		2. Changes any coordinates that are combined via space and seperates them w/ a comma.
+		It removes any chained white-space characters.
 		______*/
 
 	function cleaner(coord, i, path) {
@@ -93,12 +89,13 @@
 
 
 	function randomizer(coord, i, path) {
-		
+		// Targets whole numbers.
 		if (path[i].match(letters) === null && path[i].match(dashDeci) === null) {
 			path[i] = parseInt(path[i]) + Math.floor(Math.random() * userVariance);
 			path[i] = path[i].toString();
 
 		}
+		// Targets values with any dashes in them.
 		else if (path[i].match(dash)) {
 		  let tempArr = path[i].split('-');
 		  for (let j = 0; j < tempArr.length; j++) {
@@ -121,15 +118,13 @@
 	    path[i] = tempArr.join('-');
 
 		}
+		// Targets values with JUST decimals in them.
 		else if (path[i].match(deci) && path[i].match(letters) === null && path[i].match(dash) === null && userVariance < 100) {
 			let decDivide = path[i].split('.');
 			for (let l = 0; l < decDivide.length; l++) {
 				decDivide[l] = parseInt(decDivide[l]) + Math.floor(Math.random() * userVariance); 
 			}
 			path[i] = decDivide.join('.');
-		}
-		else {
-			// console.log('Index: ' + i + ' Value: ' + path[i]);
 		}
 	}
 
@@ -146,7 +141,6 @@
 		newPath = d.split(',');
 		newPath.forEach(cleaner);
 		newPath.forEach(randomizer);
-		console.log(newPath);
 		newPath = newPath.join(' ');
 		svg.setAttribute("d", newPath);
 	}
