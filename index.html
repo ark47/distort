@@ -12,11 +12,14 @@
 		<div class="svg-container">
 
 			<!-- SVG[start] -->
-			<svg width="500" height="500">
-					<path d="M250,107.554c38.049,0,73.82,14.817,100.725,41.722c26.904,26.904,41.722,62.676,41.722,100.725 s-14.817,73.82-41.722,100.725S288.049,392.446,250,392.446s-73.82-14.817-100.725-41.722 C122.371,323.82,107.554,288.049,107.554,250s14.817-73.82,41.722-100.725C176.18,122.371,211.951,107.554,250,107.554 M250,47.554
-					C138.192,47.554,47.554,138.192,47.554,250c0,111.808,90.638,202.446,202.446,202.446c111.808,0,202.446-90.639,202.446-202.446
-					C452.446,138.192,361.808,47.554,250,47.554L250,47.554z"/>
-			</svg>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="500px" height="500px" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
+<path d="M250,107.554c38.049,0,73.82,14.817,100.725,41.722c26.904,26.904,41.722,62.676,41.722,100.725
+	s-14.817,73.82-41.722,100.725S288.049,392.446,250,392.446s-73.82-14.817-100.725-41.722
+	C122.371,323.82,107.554,288.049,107.554,250s14.817-73.82,41.722-100.725C176.18,122.371,211.951,107.554,250,107.554 M250,47.554
+	C138.192,47.554,47.554,138.192,47.554,250c0,111.808,90.638,202.446,202.446,202.446c111.808,0,202.446-90.639,202.446-202.446
+	C452.446,138.192,361.808,47.554,250,47.554L250,47.554z"/>
+</svg>
 			<!-- SVG[end] -->
 
 		</div>
@@ -30,11 +33,14 @@
 
 	/*  ______
 		
-		This selects the <path> tag. 
+		This selects all child tags of the <svg> tag. 
 		It does NOT select the svg coordinates/attributes.
 		______*/
 
-	let svg = document.querySelector('path');
+	let svg = document.querySelector('svg').childNodes;
+	let allPaths = document.querySelectorAll('path')
+	console.log(allPaths);
+	
 
 	/*  ______
 		
@@ -56,7 +62,7 @@
 		Feel free to edit the value for greater or smaller changes in shape distortion.
 		______*/
 
-	const userVariance = 300
+	const userVariance = 150
 
 	/* 	______
 
@@ -114,9 +120,7 @@
 		      tempArr[j] = tempArr[j].toString();
 		    }
 		  }
-
-	    path[i] = tempArr.join('-');
-
+	      path[i] = tempArr.join('-');
 		}
 		// Targets values with JUST decimals in them.
 		else if (path[i].match(deci) && path[i].match(letters) === null && path[i].match(dash) === null && userVariance < 100) {
@@ -137,13 +141,40 @@
 	______*/
 
 	function distort() {
-		let d = svg.getAttribute('d');
-		newPath = d.split(',');
-		newPath.forEach(cleaner);
-		newPath.forEach(randomizer);
-		newPath = newPath.join(' ');
-		svg.setAttribute("d", newPath);
+
+		for (let i = 0; i < svg.length; i++) {
+			if (svg[i].nodeName === "path") {
+				let d = svg[i].getAttribute('d');
+				d = d.split(',')
+				d.forEach(cleaner);
+				d.forEach(randomizer);
+				d = d.join(' ');
+				svg[i].setAttribute("d", d);
+			}
+			else if (svg[i].nodeName === 'g' && svg[i].querySelector('path')) {
+				let d = svg[i].querySelector('path').getAttribute('d');
+				d = d.split(',');
+				d.forEach(cleaner);
+				d.forEach(randomizer);
+				d = d.join(' ');
+				console.log(d);
+				svg[i].querySelector('path').setAttribute('d', d);
+			}
+			// else if (svg[i].nodeName === "polygon") {
+			// 	let pt = svg[i].getAttribute('points');
+			// 	pt = pt.split(',');
+			// 	pt.forEach(cleaner);
+			// 	pt.forEach(randomizer);
+			// 	pt = pt.join(' ');
+			// 	svg[i].setAttribute('points', pt);
+			// }
+			else {
+				continue;
+			}
+		}
+
 	}
+
 
 </script>
 
