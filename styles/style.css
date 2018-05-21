@@ -1,42 +1,60 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-color: DarkSlateGray;
+	background-color: rgb(47, 79, 79);
+	font-family: 'Sunflower', sans-serif;
+	line-height: 1.4;
 }
 
-button {
+.btn {
     background-color: DarkCyan;
     color: white;
-    border-style: none;
-    border-width: 0;
-    width: 10vw;
-    height: 5vh;
-    font-size: 2vh;
-    padding: 0;
-    margin: 1vh auto;
-    transition: 0.2s;
+    font-size: 1em;
+    padding: 0.5em;
+    transition: 0.3s;
     cursor: pointer;
-    display: block;
+    display: inline-block;
+	letter-spacing: 1px;
+	z-index: 99;
+	text-transform: uppercase;
+	font-weight: 500;
+	text-align: center;
+	margin: 0 0.5em;
+	font-size: 1.3em;
+	border-bottom: 2px solid rgb(12, 77, 77, 0.5);
 }
 
-button:hover {
+.btn:hover {
 	background-color: AliceBlue;
-	color: DarkSlateGray;
+	color: darkcyan;
+}
+
+.btn:active {
+	background-color: rgba(74, 116, 116, 0.5);
+	color: aliceblue;
 }
 
 svg {
 	transform: scale(0.75,0.75);
 	fill: AliceBlue;
+	width: 500px;
+	height: 500px;
+	overflow: visible;
 }
 
 .container {
 	height: 100vh;
 	width: 70vw;
 	margin: 0 auto;
+	text-align: center;
 }
 
 .svg-container {
-	margin: 0 auto;
-	width: 100%;
+/*	margin: 0 auto;
+	width: 100%;*/
 	text-align: center;
+}
+
+path {
+	transition: 0.3s ease-in-out;
 }
