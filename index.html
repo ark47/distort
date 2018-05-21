@@ -3,6 +3,7 @@
 <head>
 	<title>Distort</title>
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Sunflower:500" rel="stylesheet">
 	<script type="text/javascript" src="scripts/script.js"></script>
 </head>
 
@@ -11,20 +12,26 @@
 	<div class="container">
 		<div class="svg-container">
 
-			<!-- SVG[start] -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="500px" height="500px" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
-<path d="M250,107.554c38.049,0,73.82,14.817,100.725,41.722c26.904,26.904,41.722,62.676,41.722,100.725
-	s-14.817,73.82-41.722,100.725S288.049,392.446,250,392.446s-73.82-14.817-100.725-41.722
-	C122.371,323.82,107.554,288.049,107.554,250s14.817-73.82,41.722-100.725C176.18,122.371,211.951,107.554,250,107.554 M250,47.554
-	C138.192,47.554,47.554,138.192,47.554,250c0,111.808,90.638,202.446,202.446,202.446c111.808,0,202.446-90.639,202.446-202.446
-	C452.446,138.192,361.808,47.554,250,47.554L250,47.554z"/>
-</svg>
-			<!-- SVG[end] -->
+		<!-- SVG[start] -->
+		<svg>
+			<!-- SQUARE -->
+			<!-- <path d="M383.328,116.672v266.656H116.672V116.672H383.328 M433.328,66.672H66.672v366.656h366.656V66.672L433.328,66.672z"/> -->
+
+			<!-- TRIANGLE -->
+			<!-- <path d="M250.001,166.978L312.367,275l62.366,108.022H250.001H125.268L187.634,275L250.001,166.978 M250.001,66.978L144.333,250,L38.665,433.022h211.336h211.333C355.669,250L250.001,66.978z250.001,66.978z"/> -->
+
+			<!-- CIRCLE -->
+			<path d="M250,107.554c38.049,0,73.82,14.817,100.725,41.722c26.904,26.904,41.722,62.676,41.722,100.725
+			s-14.817,73.82-41.722,100.725S288.049,392.446,250,392.446s-73.82-14.817-100.725-41.722
+			C122.371,323.82,107.554,288.049,107.554,250s14.817-73.82,41.722-100.725C176.18,122.371,211.951,107.554,250,107.554 M250,47.554
+			C138.192,47.554,47.554,138.192,47.554,250c0,111.808,90.638,202.446,202.446,202.446c111.808,0,202.446-90.639,202.446-202.446
+			C452.446,138.192,361.808,47.554,250,47.554L250,47.554z"/>
+		</svg>
+		<!-- SVG[end] -->
 
 		</div>
-		<button onclick="distort()">Distort</button>
-		<button value="Refresh Page" onclick="window.location.href=window.location.href">Refresh</button>
+		<h2 class="btn" onclick="distort()">Distort</h2>
+		<h2 class="btn" value="Refresh Page" onclick="window.location.href=window.location.href">Refresh</h2>
 	</div>
 </body>
 <!-- BODY[end] -->
@@ -38,144 +45,31 @@
 		______*/
 
 	let svg = document.querySelector('svg').childNodes;
-	let allPaths = document.querySelectorAll('path')
-	console.log(allPaths);
 	
-
-	/*  ______
-		
-		These are some regular expressions stored as variables.
-		Path coordinates contain a lot of non-numeric characters.
-		These help in finding/targeting them.
-		______*/
-
-	const letters = /[a-zA-Z]/
-	const spacers = /\s{2,}/
-	const space = /\s/
-	const dash = /[-]/
-	const deci = /[.]/
-	const dashDeci = /[.-]/
-
 	/* 	______
-
-		userVariance will be defined via input by the user in the future.
-		Feel free to edit the value for greater or smaller changes in shape distortion.
+		The distort() function defines the path attribute/coordinates as a variable.
+		Then it is split into an array followed up with a forEach on it with randomizer()
+		as an argument. It's joined together into a single string.
+		Finally, the original <path> attribute with the new path coordinates.
 		______*/
-
-	const userVariance = 150
-
-	/* 	______
-
-		Cleaner() is a callback function to be used with the .forEach() method.
-		It removes any chained white-space characters.
-		______*/
-
-	function cleaner(coord, i, path) {
-		if (path[i].match(spacers)) {
-			let tempPath = path[i].split(spacers);
-			for (let j = 0; j < tempPath.length; j++) {
-				tempPath[j].trim();
-			}
-			path[i] = tempPath.join('');
-		}
-
-		else if (path[i].match(space)) {
-			let tempPathTwo = path[i].split(' ');
-			path[i] = tempPathTwo.join('');
-		}
-	}
-
-	/*  ______
-		
-		Randomizer() is a callback function used as an argument with the .forEach() method.
-		
-		Current Iteration:
-		1. Randomizes any path coordinates that are whole numbers.
-		______*/
-
-
-	function randomizer(coord, i, path) {
-		// Targets whole numbers.
-		if (path[i].match(letters) === null && path[i].match(dashDeci) === null) {
-			path[i] = parseInt(path[i]) + Math.floor(Math.random() * userVariance);
-			path[i] = path[i].toString();
-
-		}
-		// Targets values with any dashes in them.
-		else if (path[i].match(dash)) {
-		  let tempArr = path[i].split('-');
-		  for (let j = 0; j < tempArr.length; j++) {
-		    if (tempArr[j].match(letters)) {
-		      continue;
-		    }
-		    else if (tempArr[j].match(deci)) {
-		      let tempDec = tempArr[j].split('.');
-		      for (let k = 0; k < tempDec.length; k++) {
-		        tempDec[k] = parseInt(tempDec[k]) + Math.floor(Math.random() * userVariance);
-		      }
-	          tempArr[j] = tempDec.join('.')
-		    }
-		    else {
-		      tempArr[j] = parseInt(tempArr[j]) + Math.floor(Math.random() * userVariance);
-		      tempArr[j] = tempArr[j].toString();
-		    }
-		  }
-	      path[i] = tempArr.join('-');
-		}
-		// Targets values with JUST decimals in them.
-		else if (path[i].match(deci) && path[i].match(letters) === null && path[i].match(dash) === null && userVariance < 100) {
-			let decDivide = path[i].split('.');
-			for (let l = 0; l < decDivide.length; l++) {
-				decDivide[l] = parseInt(decDivide[l]) + Math.floor(Math.random() * userVariance); 
-			}
-			path[i] = decDivide.join('.');
-		}
-	}
-
-	/* 	______
-
-	The distort() function defines the path attribute/coordinates as a variable.
-	Then it is split into an array followed up with a forEach on it with randomizer()
-	as an argument. It's joined together into a single string.
-	Finally, the original <path> attribute with the new path coordinates.
-	______*/
 
 	function distort() {
 
 		for (let i = 0; i < svg.length; i++) {
 			if (svg[i].nodeName === "path") {
 				let d = svg[i].getAttribute('d');
-				d = d.split(',')
-				d.forEach(cleaner);
-				d.forEach(randomizer);
-				d = d.join(' ');
-				svg[i].setAttribute("d", d);
-			}
-			else if (svg[i].nodeName === 'g' && svg[i].querySelector('path')) {
-				let d = svg[i].querySelector('path').getAttribute('d');
 				d = d.split(',');
 				d.forEach(cleaner);
-				d.forEach(randomizer);
-				d = d.join(' ');
-				console.log(d);
-				svg[i].querySelector('path').setAttribute('d', d);
-			}
-			// else if (svg[i].nodeName === "polygon") {
-			// 	let pt = svg[i].getAttribute('points');
-			// 	pt = pt.split(',');
-			// 	pt.forEach(cleaner);
-			// 	pt.forEach(randomizer);
-			// 	pt = pt.join(' ');
-			// 	svg[i].setAttribute('points', pt);
-			// }
-			else {
-				continue;
+				d.some(randomizer);
+				d = d.join(',');
+				svg[i].setAttribute("d", d);
+				counter = 0;
+				iRay = [];
 			}
 		}
 
 	}
-
-
+	
 </script>
 
 </html>
