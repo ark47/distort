@@ -77,9 +77,12 @@ function scrambler(cor, letter) {
     ______*/
 
 function randomizer(coord, i, path) {
+    
     // Redefines 'i' as a random index in the 'path' array.
     i = Math.floor(Math.random() * path.length);
 
+    // Check to see if the current coordinate has been iterated over.
+    // If so, randomize 'i'. If not, .push() it into the iRay array.
     if (iRay.includes(i)) {
         i = Math.floor(Math.random() * path.length);
     } else {
