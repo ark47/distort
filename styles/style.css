@@ -15,6 +15,11 @@ h3 {
 input {
 	border: none;
 	padding: 8px;
+	max-width: 3em;
+	text-align: center;
+	font-size: 1em;
+	font-family: 'Sunflower', sans-serif;
+	color: rgb(47, 79, 79);
 }
 
 .btn {
