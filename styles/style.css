@@ -6,6 +6,17 @@ body {
 	line-height: 1.4;
 }
 
+h3 {
+	color: aliceblue;
+	padding: 0.5em;
+	letter-spacing: 1px;
+}
+
+input {
+	border: none;
+	padding: 8px;
+}
+
 .btn {
     background-color: DarkCyan;
     color: white;
@@ -58,3 +69,7 @@ svg {
 path {
 	transition: 0.3s ease-in-out;
 }
+
+/* .user-control {
+	display: block;
+} */

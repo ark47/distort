@@ -24,6 +24,20 @@ const numDistort = Math.floor(Math.random() * userVariance + 10);
 let counter = 0;
 let iRay = [];
 
+/*  ______
+    User control functions.
+    ______*/
+
+    function userI() {
+        let userX = document.getElementById("user-input");
+        userInput = parseInt(userX.value);
+    }
+
+    function userV() {
+        let userZ = document.getElementById("user-variance");
+        userVariance = parseInt(userZ.value);
+    }
+
 /* 	______
     Cleaner() is a callback function to be used with the .forEach() method.
     It removes any chained white-space characters.
