@@ -18,9 +18,9 @@ const dashDeci = /[.-]/
     Feel free to edit the value for greater or smaller changes in shape distortion.
     ______*/
 
-let userVariance = 500;
+let userVariance = 25;
 let userInput = 3;
-const numDistort = Math.floor(Math.random() * userVariance + 10);
+let numDistort = Math.floor(Math.random() * userVariance + 1);
 let counter = 0;
 let iRay = [];
 
@@ -33,9 +33,19 @@ let iRay = [];
         userInput = parseInt(userX.value);
     }
 
-    function userV() {
+    function mild() {
+        userVariance = 25;
         let userZ = document.getElementById("user-variance");
-        userVariance = parseInt(userZ.value);
+    }
+
+    function medium() {
+        userVariance = 100;
+        let userZ = document.getElementById("user-variance");
+    }
+
+    function extreme() {
+        userVariance = 500;
+        let userZ = document.getElementById("user-variance");
     }
 
 /* 	______
@@ -94,6 +104,8 @@ function randomizer(coord, i, path) {
     
     // Redefines 'i' as a random index in the 'path' array.
     i = Math.floor(Math.random() * path.length);
+
+    numDistort = Math.floor(Math.random() * userVariance + 1);
 
     // Check to see if the current coordinate has been iterated over.
     // If so, randomize 'i'. If not, .push() it into the iRay array.

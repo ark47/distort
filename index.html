@@ -33,14 +33,20 @@
 		<h2 class="btn" onclick="distort()">Distort</h2>
 		<h2 class="btn" value="Refresh Page" onclick="window.location.href=window.location.href">Refresh</h2>
 		<div class="user-control">
-			<h3 class="">Input: <input type="text" id="user-input" onchange="userI()" value="3"></h3>
-			<h3 class="">Variance: <input type="text" id="user-variance" onchange="userV()" value="500"></h3>
+			<h3>Coordinates to Distort: <input type="text" id="user-input" onchange="userI()"></h3>
+			<h3>Distortion Variance:</h3>
+			<h3 class="mild" onclick="mild()">Mild</h3>
+			<h3 class="medium" onclick="medium()">Medium</h3>
+			<h3 class="extreme" onclick="extreme()">Extreme</h3>
+			<!-- <h3 class="custom">Custom: <input type="text" id="user-variance" onchange=""></h3> -->
 		</div>
 	</div>
 </body>
 <!-- BODY[end] -->
 
 <script>
+
+	document.getElementById("user-input").value = userInput;
 
 	/*  ______
 		
@@ -58,7 +64,7 @@
 		______*/
 
 	function distort() {
-
+		
 		for (let i = 0; i < svg.length; i++) {
 			if (svg[i].nodeName === "path") {
 				let d = svg[i].getAttribute('d');

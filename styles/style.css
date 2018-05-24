@@ -75,6 +75,11 @@ path {
 	transition: 0.3s ease-in-out;
 }
 
-/* .user-control {
-	display: block;
-} */
+.mild, .medium, .extreme, .custom {
+	display: inline;
+	cursor: pointer;
+}
+
+.mild:hover, .medium:hover, .extreme:hover {
+	color: red;
+}
