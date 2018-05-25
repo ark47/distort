@@ -46,10 +46,17 @@
 
 <script>
 
+	let mildAdd = document.getElementsByClassName('mild')[0];
+	let mediumAdd = document.getElementsByClassName('medium')[0];
+	let extremeAdd = document.getElementsByClassName('extreme')[0];
+
+	/*  ______
+	Notifies the user of how many coordinates of the svg will be distorted.
+		______*/
+
 	document.getElementById("user-input").value = userInput;
 
 	/*  ______
-		
 		This selects all child tags of the <svg> tag. 
 		It does NOT select the svg coordinates/attributes.
 		______*/
