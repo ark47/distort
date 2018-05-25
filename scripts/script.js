@@ -18,7 +18,7 @@ const dashDeci = /[.-]/
     Feel free to edit the value for greater or smaller changes in shape distortion.
     ______*/
 
-let userVariance = 25;
+let userVariance = 50;
 let userInput = 3;
 let numDistort = Math.floor(Math.random() * userVariance + 1);
 let counter = 0;
@@ -35,17 +35,23 @@ let iRay = [];
 
     function mild() {
         userVariance = 25;
-        let userZ = document.getElementById("user-variance");
+        mildAdd.classList.add('active-variance');
+        mediumAdd.classList.remove('active-variance');
+        extremeAdd.classList.remove('active-variance');
     }
 
     function medium() {
         userVariance = 100;
-        let userZ = document.getElementById("user-variance");
+        mildAdd.classList.remove('active-variance');
+        mediumAdd.classList.add('active-variance');
+        extremeAdd.classList.remove('active-variance');
     }
 
     function extreme() {
         userVariance = 500;
-        let userZ = document.getElementById("user-variance");
+        mildAdd.classList.remove('active-variance');
+        mediumAdd.classList.remove('active-variance');
+        extremeAdd.classList.add('active-variance');
     }
 
 /* 	______
