@@ -78,8 +78,27 @@ path {
 .mild, .medium, .extreme, .custom {
 	display: inline;
 	cursor: pointer;
+	background-color: DarkCyan;
+    color: white;
+    font-size: 1em;
+    padding: 0.85em;
+	transition: 0.2s;
+	margin: 0 16px;
+	border-bottom: 2px solid rgb(12, 77, 77, 0.5);
 }
 
 .mild:hover, .medium:hover, .extreme:hover {
-	color: red;
+	background-color: rgba(145, 231, 231, 0.75);
+	color:  rgb(47, 79, 79);
+}
+
+.active-variance {
+	background-color: aliceblue;
+	color: darkcyan;
+}
+
+.active-variance:hover {
+	background-color: aliceblue;
+	color: darkcyan;
+	cursor: default;
 }
