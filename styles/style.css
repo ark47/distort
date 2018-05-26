@@ -52,23 +52,22 @@ input {
 
 svg {
 	transform: scale(0.75,0.75);
-	fill: AliceBlue;
 	width: 500px;
 	height: 500px;
+	fill: AliceBlue;
 	overflow: visible;
 }
 
 .container {
-	height: 100vh;
-	width: 70vw;
+	width: 100%;
 	margin: 0 auto;
 	text-align: center;
 }
 
 .svg-container {
-/*	margin: 0 auto;
-	width: 100%;*/
-	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	/* text-align: center; */
 }
 
 path {
