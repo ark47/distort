@@ -185,6 +185,8 @@ function randomizer(coord, i, path) {
         path[i] = path[i].toString();
     }
 
+    // Notch the counter up by one and check to see if it's greater than the userInput.
+    // If so, end the iterator.
     counter++
     if (counter > userInput) {
         return path[i];
