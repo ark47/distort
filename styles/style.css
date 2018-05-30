@@ -4,6 +4,8 @@ body {
 	background-color: rgb(47, 79, 79);
 	font-family: 'Sunflower', sans-serif;
 	line-height: 1.4;
+	width: 100%;
+	height: 100%;
 }
 
 h3 {
@@ -50,24 +52,22 @@ input {
 	color: aliceblue;
 }
 
-svg {
-	transform: scale(0.75,0.75);
-	width: 500px;
-	height: 500px;
-	fill: AliceBlue;
-	overflow: visible;
-}
-
 .container {
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
 }
 
-.svg-container {
+/* .svg-container {
 	margin: 0 auto;
 	width: 100%;
-	/* text-align: center; */
+	position: relative;
+} */
+
+svg {
+	fill: AliceBlue;
+	overflow: visible;
+	transform: scale(0.75);
 }
 
 path {
