@@ -58,16 +58,15 @@ input {
 	text-align: center;
 }
 
-/* .svg-container {
-	margin: 0 auto;
-	width: 100%;
-	position: relative;
-} */
+.svg-container {
+	margin: 50px auto;
+	width: 40%;
+}
 
 svg {
 	fill: AliceBlue;
 	overflow: visible;
-	transform: scale(0.75);
+	/* transform: scale(0.75); */
 }
 
 path {
