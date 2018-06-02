@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 console.log("Welcome to the Distort application.");
 
 /*  ______
@@ -6,12 +7,12 @@ console.log("Welcome to the Distort application.");
     These help in finding/targeting them.
     ______*/
 
-const letters = /[a-zA-Z]/
-const spacers = /\s{2,}/
-const space = /\s/
-const dash = /[-]/
-const deci = /[.]/
-const dashDeci = /[.-]/
+const letters = /[a-zA-Z]/;
+const spacers = /\s{2,}/;
+const space = /\s/;
+const dash = /[-]/;
+const deci = /[.]/;
+const dashDeci = /[.-]/;
 
 /* 	______
     userVariance will be defined via input by the user in the future.
@@ -82,7 +83,7 @@ function scrambler(cor, letter) {
     let temp = cor.split(letter);
     for (let j = 0; j < temp.length; j++) {
         if (temp[j].match(letters) === null && temp[j].match(deci)) {
-            let tempTwo = temp[j].split('.')
+            let tempTwo = temp[j].split('.');
             for (let k = 0; k < tempTwo.length; k++) {
                 if (tempTwo[k].match(dash) === null) {
                     tempTwo[k] = parseInt(tempTwo[k]) + Math.floor(Math.random() * numDistort);
@@ -187,7 +188,7 @@ function randomizer(coord, i, path) {
 
     // Notch the counter up by one and check to see if it's greater than the userInput.
     // If so, end the iterator.
-    counter++
+    counter++;
     if (counter > userInput) {
         return path[i];
     }

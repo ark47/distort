@@ -66,7 +66,6 @@ input {
 svg {
 	fill: AliceBlue;
 	overflow: visible;
-	/* transform: scale(0.75); */
 }
 
 path {
