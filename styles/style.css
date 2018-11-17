@@ -1,4 +1,4 @@
-body {
+body, html {
 	margin: 0;
 	padding: 0;
 	background-color: rgb(47, 79, 79);
@@ -8,15 +8,19 @@ body {
 	height: 100%;
 }
 
+h2 {
+	margin: 0;
+}
+
 h3 {
+	margin: 0;
 	color: aliceblue;
-	padding: 0.5em;
 	letter-spacing: 1px;
 }
 
 input {
 	border: none;
-	padding: 8px;
+	padding: 6px 2px;
 	max-width: 3em;
 	text-align: center;
 	font-size: 1em;
@@ -24,22 +28,56 @@ input {
 	color: rgb(47, 79, 79);
 }
 
+.container {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 0;
+}
+
+.svg-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 90%;
+}
+
+svg {
+	fill: AliceBlue;
+	overflow: visible;
+}
+
+path {
+	transition: 0.3s ease-in-out;
+}
+
+.user-control {
+	display: grid;
+	grid-template-columns: repeat(6, 16.667%);
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	align-content: center;
+	justify-items: center;
+}
+
 .btn {
     background-color: DarkCyan;
     color: white;
-    font-size: 1em;
-    padding: 0.5em;
     transition: 0.3s;
     cursor: pointer;
-    display: inline-block;
-	letter-spacing: 1px;
-	z-index: 99;
+	letter-spacing: 2px;
 	text-transform: uppercase;
-	font-weight: 500;
-	text-align: center;
-	margin: 0 0.5em;
 	font-size: 1.3em;
 	border-bottom: 2px solid rgb(12, 77, 77, 0.5);
+	border-top: 2px solid rgb(12, 77, 77, 0.5);
+	display: inline-block;
+	font-weight: bold;
+	width: 100%;
+	padding: 5vh 0;
+	display: flex;
 }
 
 .btn:hover {
@@ -52,36 +90,17 @@ input {
 	color: aliceblue;
 }
 
-.container {
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.svg-container {
-	margin: 50px auto;
-	width: 40%;
-}
-
-svg {
-	fill: AliceBlue;
-	overflow: visible;
-}
-
-path {
-	transition: 0.3s ease-in-out;
-}
-
 .mild, .medium, .extreme, .custom {
-	display: inline;
 	cursor: pointer;
 	background-color: DarkCyan;
     color: white;
     font-size: 1em;
-    padding: 0.85em;
-	transition: 0.2s;
-	margin: 0 16px;
+	transition: 0.3s;
 	border-bottom: 2px solid rgb(12, 77, 77, 0.5);
+	border-top: 2px solid rgb(12, 77, 77, 0.5);
+	margin: 0;
+	width: 100%;
+	padding: 5vh 0;
 }
 
 .mild:hover, .medium:hover, .extreme:hover {

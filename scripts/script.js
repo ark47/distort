@@ -19,20 +19,21 @@ const dashDeci = /[.-]/;
     Feel free to edit the value for greater or smaller changes in shape distortion.
     ______*/
 
-let userVariance = 50;
-let userInput = 3;
+let userVariance = 100;
+let userInput = 13;
 let numDistort = Math.floor(Math.random() * userVariance + 1);
 let counter = 0;
 let iRay = [];
+
 
 /*  ______
     User control functions.
     ______*/
 
-    function userI() {
-        let userX = document.getElementById("user-input");
-        userInput = parseInt(userX.value);
-    }
+    // function userI() {
+    //     let userX = document.getElementById("user-input");
+    //     userInput = parseInt(userX.value);
+    // }
 
     function mild() {
         userVariance = 25;
@@ -61,6 +62,7 @@ let iRay = [];
     ______*/
 
 function cleaner(coord, i, path) {
+    userInput = Math.floor(path.length / 4);
     if (path[i].match(spacers)) {
         let tempPath = path[i].split(spacers);
         for (let j = 0; j < tempPath.length; j++) {
