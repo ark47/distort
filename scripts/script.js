@@ -189,7 +189,7 @@ function randomizer(coord, i, path) {
     }
 
     // Notch the counter up by one and check to see if it's greater than the userInput.
-    // If so, end the iterator.
+    // If so, break/end the distortion.
     counter++;
     if (counter > userInput) {
         return path[i];

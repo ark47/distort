@@ -54,7 +54,8 @@ path {
 
 .user-control {
 	display: grid;
-	grid-template-columns: repeat(6, 16.667%);
+	grid-template-columns: repeat(5, 20%);
+	/* repeat(6, 16.667%) */
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -71,7 +72,7 @@ path {
 	letter-spacing: 2px;
 	text-transform: uppercase;
 	font-size: 1.3em;
-	border-bottom: 2px solid rgb(12, 77, 77, 0.5);
+	/* border-bottom: 2px solid rgb(12, 77, 77, 0.5); */
 	border-top: 2px solid rgb(12, 77, 77, 0.5);
 	display: inline-block;
 	font-weight: bold;
@@ -92,11 +93,11 @@ path {
 
 .mild, .medium, .extreme, .custom {
 	cursor: pointer;
-	background-color: DarkCyan;
+	background-color: rgb(11, 102, 102);
     color: white;
     font-size: 1em;
 	transition: 0.3s;
-	border-bottom: 2px solid rgb(12, 77, 77, 0.5);
+	/* border-bottom: 2px solid rgb(12, 77, 77, 0.5); */
 	border-top: 2px solid rgb(12, 77, 77, 0.5);
 	margin: 0;
 	width: 100%;
