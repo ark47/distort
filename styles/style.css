@@ -8,11 +8,53 @@ body, html {
 	height: 100%;
 }
 
-h2 {
-	margin: 0;
+form {
+	margin: 0 auto;
+	text-align: center;
 }
 
-h3 {
+textarea {
+	padding: 6px 10px;
+	font-family: 'Sunflower', sans-serif;
+	line-height: 1.4;
+	font-size: 1em;
+	outline: none;
+	border: none;
+	background-color: aliceblue;
+	resize: none;
+	width: 70%;
+	height: 55vh;
+	margin: 16px;
+	border-top: 2px solid lightblue;
+	color: black;
+}
+
+textarea:focus {
+	background-color: white;
+	border-top: 2px solid rgb(213, 226, 236);
+}
+
+input[type="submit"] {
+	border-top: 2px solid rgb(177, 195, 211);
+	padding: 10px 16px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	font-size: 1.1em;
+}
+
+input[type="submit"]:hover {
+	background-color: darkcyan;
+	color: aliceblue;
+	border-top: 2px solid rgb(20, 112, 112);
+}
+
+/* h2 {
+	margin: 0;
+} */
+
+h2, h3 {
 	margin: 0;
 	color: aliceblue;
 	letter-spacing: 1px;
@@ -21,7 +63,7 @@ h3 {
 input {
 	border: none;
 	padding: 6px 2px;
-	max-width: 3em;
+	/* max-width: 3em; */
 	text-align: center;
 	font-size: 1em;
 	font-family: 'Sunflower', sans-serif;
@@ -55,7 +97,7 @@ path {
 .user-control {
 	display: grid;
 	grid-template-columns: repeat(5, 20%);
-	/* repeat(6, 16.667%) */
+	/* grid-template-columns: repeat(6, 16.667%); */
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -71,7 +113,7 @@ path {
     cursor: pointer;
 	letter-spacing: 2px;
 	text-transform: uppercase;
-	font-size: 1.3em;
+	/* font-size: 1.3em; */
 	/* border-bottom: 2px solid rgb(12, 77, 77, 0.5); */
 	border-top: 2px solid rgb(12, 77, 77, 0.5);
 	display: inline-block;
@@ -95,7 +137,7 @@ path {
 	cursor: pointer;
 	background-color: rgb(11, 102, 102);
     color: white;
-    font-size: 1em;
+    font-size: 1.3em;
 	transition: 0.3s;
 	/* border-bottom: 2px solid rgb(12, 77, 77, 0.5); */
 	border-top: 2px solid rgb(12, 77, 77, 0.5);
@@ -118,4 +160,52 @@ path {
 	background-color: aliceblue;
 	color: darkcyan;
 	cursor: default;
+}
+
+.upload-icon {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	color: white;
+	background-color: darkcyan;
+	border-radius: 10%;
+	transition: 0.3s;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.upload-icon h2 {
+	padding: 8px;
+}
+
+.upload-icon:hover {
+	background-color: AliceBlue;
+	color: darkcyan;
+}
+
+.import-svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100%;
+	z-index: 11;
+	background-color: rgba(0,0,0,.75);
+	padding: 16px 0;
+	transition: 0.3s;
+}
+
+.sub {
+	border-top: 2px solid lightblue;
+	padding: 12px;
+	color: darkcyan;
+	background-color: aliceblue;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.sub:hover {
+	background-color: darkcyan;
+	color: aliceblue;
+	border-top: 2px solid rgb(6, 99, 99);
 }
