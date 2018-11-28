@@ -54,7 +54,7 @@ input[type="submit"]:hover {
 	margin: 0;
 } */
 
-h2, h3 {
+h1, h2, h3 {
 	margin: 0;
 	color: aliceblue;
 	letter-spacing: 1px;
@@ -88,6 +88,7 @@ input {
 svg {
 	fill: AliceBlue;
 	overflow: visible;
+	padding: 2rem 0 0 0;
 }
 
 path {
@@ -209,3 +210,24 @@ path {
 	color: aliceblue;
 	border-top: 2px solid rgb(6, 99, 99);
 }
+
+.about {
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: aliceblue;
+	padding: 2rem;
+	text-align: left;
+	max-width: 20%;
+}
+
+.about p {
+	font-weight: 300;
+	line-height: 1.45;
+}
+
+/* .about svg {
+	padding: 0;
+	width: 3rem;
+	display: inline-block;
+} */
