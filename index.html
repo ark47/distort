@@ -6,7 +6,6 @@
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Sunflower:300,500" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<script type="text/javascript" src="scripts/script.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -23,8 +22,8 @@
 			<h3 class="sub material-icons">check</h3>
 		</div> -->
 
-		<div class="about">
-			<!-- <svg width="100%" viewBox="0 0 500 500">
+		<!-- <div class="about">
+			 <svg width="100%" viewBox="0 0 500 500">
 				<path d="M395.769,346.727c0.165-0.831,0.337-1.65,0.495-2.493c10.486-55.812,9.716-112.452,0.124-168.509
 				c-5.224-30.529-17.471-58.513-44.122-76.726c-27.151-18.556-58.328-25.855-90.895-26.401c-9.692-0.164-23.626-0.272-39.15-0.345
 				c-13.178-24.683-39.178-41.485-69.112-41.485c-43.246,0-78.304,35.058-78.304,78.304c0,28.049,14.757,52.64,36.922,66.469V456.84
@@ -35,21 +34,19 @@
 				c22.174,5.26,34.485,22.518,38.21,42.981c7.779,42.798,9.427,85.959,2.703,128.811c-36.027,5.597-63.922,35.754-66.049,72.817
 				C233.433,390.31,214.966,389.855,188.82,388.052z M332.559,446.761c-29.685,0-53.834-24.149-53.834-53.832
 				c0-29.686,24.149-53.835,53.834-53.835c29.684,0,53.833,24.149,53.833,53.835C386.392,422.611,362.242,446.761,332.559,446.761z"/>
-			</svg> -->
+			</svg> 
 			<h2>About</h2>
 			<p>Goal: Allow a user to upload/insert a SVG. Then allow that user to randomize a defined amount of the coordinates of that SVG's path.</p>
 			<p>Intent: Similar to a random color picker sparking inpsiration when an artist/designer is in a rut. This attempts to inspire new ideas via randomizing a SVG.</p>
-		</div>
+		</div> -->
 
 		<div class="svg-container">
-			<!-- SVG[start] -->
 			<svg width="100%" height="80%" viewBox="0 0 400 400">
 					<path d="M200,75c33.389,0,64.778,13.002,88.388,36.612C311.998,135.221,325,166.611,325,200s-13.002,64.778-36.612,88.388
 					C264.778,311.998,233.389,325,200,325s-64.779-13.002-88.388-36.612C88.002,264.778,75,233.389,75,200s13.002-64.779,36.612-88.388
 					S166.611,75,200,75 M200,25c-96.65,0-175,78.35-175,175c0,96.649,78.35,175,175,175c96.649,0,175-78.351,175-175
 					C375,103.35,296.649,25,200,25L200,25z"/>
 			</svg>
-			<!-- SVG[end] -->
 		</div>
 
 		<div class="user-control">
@@ -63,57 +60,6 @@
 			<!-- <h3 class="custom">Custom: <input type="text" id="user-variance" onchange=""></h3> -->
 		</div>
 	</div>
+	<script type="text/javascript" src="scripts/script.js"></script>
 </body>
-
-<script>
-
-	let mildAdd = document.getElementsByClassName('mild')[0];
-	let mediumAdd = document.getElementsByClassName('medium')[0];
-	let extremeAdd = document.getElementsByClassName('extreme')[0];
-
-	// const testFunction = () => {
-	// 	console.log(event.target.value);
-	// 	// console.log(document.getElementsByTagName('textarea'));
-	// }
-
-	/*  ______
-		Notifies the user of how many coordinates of the svg will be distorted.
-		______*/
-	
-	// document.getElementById("user-input").value = userInput;
-
-	/*  ______
-		This selects all child tags of the <svg> tag. 
-		It does NOT select the svg coordinates/attributes.
-		______*/
-
-	let svg = document.querySelector('svg').childNodes;
-	
-	/* 	______
-		The distort() function defines the path attribute/coordinates as a variable.
-		Then it is split into an array followed up with a forEach on it with randomizer()
-		as an argument. It's joined together into a single string.
-		Finally, the original <path> attribute is replaced with the new path coordinates.
-		______*/
-
-	function distort() {
-		
-		for (let i = 0; i < svg.length; i++) {
-			if (svg[i].nodeName === "path") {
-				let d = svg[i].getAttribute('d');
-				// console.log(Math.floor(d.length / 5));
-				d = d.split(',');
-				d.forEach(cleaner);
-				d.some(randomizer);
-				d = d.join(',');
-				svg[i].setAttribute("d", d);
-				counter = 0;
-				iRay = [];
-			}
-		}
-
-	}
-	
-</script>
-
 </html>

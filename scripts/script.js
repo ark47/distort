@@ -1,5 +1,44 @@
-/*jshint esversion: 6 */
 console.log("Welcome to the Distort application.");
+
+let mildAdd = document.getElementsByClassName('mild')[0];
+let mediumAdd = document.getElementsByClassName('medium')[0];
+let extremeAdd = document.getElementsByClassName('extreme')[0];
+
+/*  ______
+    Notifies the user of how many coordinates of the svg will be distorted.
+    ______*/
+
+// document.getElementById("user-input").value = userInput;
+
+/*  ______
+    This selects all child tags of the <svg> tag. 
+    ______*/
+
+let svg = document.querySelector('svg').childNodes;
+
+/* 	______
+    The distort() function defines the path attribute/coordinates as a variable.
+    Then it is split into an array followed up with a .forEach() on it with the randomizer()
+    function as an argument. It's joined together into a single string.
+    Finally, the original <path> attribute is replaced with the new path coordinates.
+    ______*/
+
+function distort() {
+    
+    for (let i = 0; i < svg.length; i++) {
+        if (svg[i].nodeName === "path") {
+            let d = svg[i].getAttribute('d');
+            d = d.split(',');
+            d.forEach(cleaner);
+            d.some(randomizer);
+            d = d.join(',');
+            svg[i].setAttribute("d", d);
+            counter = 0;
+            iRay = [];
+        }
+    }
+
+}
 
 /*  ______
     These are some regular expressions stored as variables.
