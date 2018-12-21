@@ -16,30 +16,6 @@ let extremeAdd = document.getElementsByClassName('extreme')[0];
 
 let svg = document.querySelector('svg').childNodes;
 
-/* 	______
-    The distort() function defines the path attribute/coordinates as a variable.
-    Then it is split into an array followed up with a .forEach() on it with the randomizer()
-    function as an argument. It's joined together into a single string.
-    Finally, the original <path> attribute is replaced with the new path coordinates.
-    ______*/
-
-function distort() {
-    
-    for (let i = 0; i < svg.length; i++) {
-        if (svg[i].nodeName === "path") {
-            let d = svg[i].getAttribute('d');
-            d = d.split(',');
-            d.forEach(cleaner);
-            d.some(randomizer);
-            d = d.join(',');
-            svg[i].setAttribute("d", d);
-            counter = 0;
-            iRay = [];
-        }
-    }
-
-}
-
 /*  ______
     These are some regular expressions stored as variables.
     Path coordinates contain a lot of non-numeric characters.
@@ -59,7 +35,7 @@ const dashDeci = /[.-]/;
     ______*/
 
 let userVariance = 100;
-let userInput = 13;
+let userInput;
 let numDistort = Math.floor(Math.random() * userVariance + 1);
 let counter = 0;
 let iRay = [];
@@ -235,3 +211,27 @@ function randomizer(coord, i, path) {
     }
 
 }
+
+/* 	______
+    The distort() function defines the path attribute/coordinates as a variable.
+    Then it is split into an array followed up with a .forEach() on it with the randomizer()
+    function as an argument. It's joined together into a single string.
+    Finally, the original <path> attribute is replaced with the new path coordinates.
+    ______*/
+
+    function distort() {
+    
+        for (let i = 0; i < svg.length; i++) {
+            if (svg[i].nodeName === "path") {
+                let d = svg[i].getAttribute('d');
+                d = d.split(',');
+                d.forEach(cleaner);
+                d.some(randomizer);
+                d = d.join(',');
+                svg[i].setAttribute("d", d);
+                counter = 0;
+                iRay = [];
+            }
+        }
+    
+    }
