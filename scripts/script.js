@@ -36,7 +36,7 @@ const dashDeci = /[.-]/;
 
 let userVariance = 100;
 let userInput;
-let numDistort = Math.floor(Math.random() * userVariance + 1);
+let numDistort;
 let counter = 0;
 let iRay = [];
 
@@ -207,7 +207,7 @@ function randomizer(coord, i, path) {
     // If so, break/end the distortion.
     counter++;
     if (counter > userInput) {
-        return path[i];
+        return;
     }
 
 }
